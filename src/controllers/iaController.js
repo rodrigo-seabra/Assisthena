@@ -1,5 +1,5 @@
 const { processInput } = require('../services/nlpService');
-const { storeConversation } = require('../models/conversationModel');
+const { storeConversation, getConversationsByUserId } = require('../models/conversationModel');
 
 const handleUserInput = async (req, res) => {
     const { userId, userInput, userType } = req.body;
@@ -8,4 +8,20 @@ const handleUserInput = async (req, res) => {
     res.json({ response: response.answer });
 };
 
-module.exports = { handleUserInput };
+const getUserConversations = async (req, res) => {
+    const { userId } = req.body; 
+
+    if (!userId) {
+        return res.status(400).json({ error: 'userId é obrigatório.' });
+    }
+
+    try {
+        const conversations = await getConversationsByUserId(userId);
+        res.json(conversations); // Retorna as conversas encontradas
+    } catch (error) {
+        console.error('Erro ao buscar conversas:', error);
+        res.status(500).json({ error: 'Erro ao buscar conversas.' });
+    }
+};
+
+module.exports = { handleUserInput, getUserConversations };

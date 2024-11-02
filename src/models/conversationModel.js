@@ -15,4 +15,8 @@ const storeConversation = async (userId, userInput, botResponse) => {
     await newConversation.save();
 };
 
-module.exports = { Conversation, storeConversation };
+const getConversationsByUserId = async (userId) => {
+    return await Conversation.find({ userId }).sort({ timestamp: -1 }); 
+};
+
+module.exports = { Conversation, storeConversation, getConversationsByUserId };
