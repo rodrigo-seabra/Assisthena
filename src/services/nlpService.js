@@ -7,6 +7,42 @@ const manager = new NlpManager({ languages: ['pt'], forceNER: true });
 
 
 const documents = [
+
+    // Professores
+    { text: "como melhorar o engajamento dos alunos?", intent: "improve_student_engagement" },
+    { text: "quais são as melhores práticas para aulas interativas?", intent: "best_practices_interactive_classes" },
+    { text: "como lidar com alunos desmotivados?", intent: "handling_unmotivated_students" },
+    { text: "como adaptar o conteúdo para alunos com dificuldades?", intent: "adapt_content_for_struggling_students" },
+    { text: "qual é a melhor abordagem para aulas híbridas?", intent: "best_approach_hybrid_classes" },
+
+    // Alunos
+    { text: "como posso me preparar para provas?", intent: "exam_preparation_tips" },
+    { text: "dicas para melhorar minhas notas?", intent: "tips_to_improve_grades" },
+    { text: "como posso pedir ajuda ao professor?", intent: "how_to_ask_teacher_for_help" },
+    { text: "como organizar meu material de estudo?", intent: "organizing_study_materials" },
+    { text: "quais técnicas de estudo funcionam melhor?", intent: "effective_study_techniques" },
+
+    // Diretores
+    { text: "como melhorar a comunicação entre escola e família?", intent: "improving_school_family_communication" },
+    { text: "como promover um ambiente escolar inclusivo?", intent: "promoting_inclusive_school_environment" },
+    { text: "quais são as práticas recomendadas para gestão escolar?", intent: "best_practices_school_management" },
+    { text: "como lidar com conflitos entre alunos?", intent: "handling_student_conflicts" },
+    { text: "como avaliar o desempenho dos professores?", intent: "evaluating_teacher_performance" },
+
+    // Orientadores e Coordenadores
+    { text: "quais são os principais sinais de dificuldades de aprendizado?", intent: "identifying_learning_difficulties" },
+    { text: "como ajudar alunos com dificuldades emocionais?", intent: "supporting_students_with_emotional_issues" },
+    { text: "quais estratégias ajudam a desenvolver habilidades sociais?", intent: "strategies_for_social_skills" },
+    { text: "como promover a saúde mental na escola?", intent: "promoting_mental_health_school" },
+    { text: "quais são as melhores práticas para orientação vocacional?", intent: "best_practices_vocational_guidance" },
+
+    // Geral
+    { text: "como promover a empatia no ambiente escolar?", intent: "promoting_empathy_school_environment" },
+    { text: "quais atividades extracurriculares são recomendadas?", intent: "recommended_extracurricular_activities" },
+    { text: "como envolver os pais na educação dos filhos?", intent: "involving_parents_in_education" },
+    { text: "como implementar práticas de sustentabilidade na escola?", intent: "implementing_sustainability_practices_school" },
+    { text: "quais são as melhores práticas de disciplina escolar?", intent: "best_practices_school_discipline" },
+
     // 4º Ano
     { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o 4ano", intent: "response_for_4_class_professor" },
     { text: "o que o professor espera dos alunos do 4º ano?", intent: "response_for_4ano_expectations" },
@@ -102,18 +138,16 @@ const documents = [
 ];
 
 
-// Função para adicionar documentos ao NLP manager
 const addDocumentsToManager = (docs) => {
     docs.forEach(doc => manager.addDocument('pt', doc.text, doc.intent));
 };
 
-// Adicionando os documentos ao gerenciador
 addDocumentsToManager(documents);
 
 
 
 const addAnswersFromJson = () => {
-    const filePath = path.join(__dirname, '../data/response.json'); // Caminho para o arquivo JSON
+    const filePath = path.join(__dirname, '../data/response.json');
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Erro ao ler o arquivo JSON:', err);
@@ -121,7 +155,7 @@ const addAnswersFromJson = () => {
         }
 
         try {
-            const responses = JSON.parse(data); // Faz o parsing do JSON
+            const responses = JSON.parse(data);
             Object.entries(responses).forEach(([intent, answer]) => {
                 manager.addAnswer('pt', intent, answer);
             });
