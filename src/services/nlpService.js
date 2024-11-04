@@ -122,6 +122,20 @@ const documents = [
     { text: "como melhorar a comunicação entre alunos e professores?", intent: "improving_communication" },
     { text: "quais são as melhores práticas para uma boa convivência escolar?", intent: "good_school_living_practices" },
 
+    { "text": "quais são as fórmulas de física", "intent": "formulas_fisica" },
+    { "text": "quais são as fórmulas de matemática", "intent": "formulas_matematica" },
+    { "text": "quais são as fórmulas de química", "intent": "formulas_quimica" },
+    { "text": "explique a lei de Newton", "intent": "lei_newton" },
+    { "text": "o que é a equação de segundo grau", "intent": "equacao_segundo_grau" },
+    { "text": "o que é um elemento químico", "intent": "elemento_quimico" },
+
+    { "text": "como planejar meu futuro", "intent": "planejamento_futuro" },
+    { "text": "como melhorar minha produtividade", "intent": "melhorar_produtividade" },
+    { "text": "quais são as melhores técnicas de estudo", "intent": "tecnicas_estudo" },
+    { "text": "como posso melhorar minhas notas", "intent": "melhorar_notas" },
+    { "text": "como fazer um cronograma de estudos", "intent": "cronograma_estudos" },
+
+
     { text: "como planejar meu futuro", intent: "planejamento_futuro" },
     { text: "importância do autoconhecimento", intent: "autoconhecimento" },
     { text: "como definir metas pessoais", intent: "definicao_metas" },
@@ -174,6 +188,14 @@ const trainNLP = async () => {
 };
 const processInput = async (text) => {
     const response = await manager.process('pt', text);
+
+    if (!response.intent || response.score < 0.5) {
+        return {
+            answer: "Desculpe, não consegui entender sua pergunta. Poderia reformulá-la ou tentar algo mais específico?",
+            intent: "undefined"
+        };
+    }
+
     return response;
 };
 
