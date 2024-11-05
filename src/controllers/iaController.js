@@ -8,6 +8,10 @@ const handleUserInput = async (req, res) => {
     res.json({ response: response.answer });
 };
 
+const pong = async (req, res) => {
+    res.json("pong");
+};
+
 const getUserConversations = async (req, res) => {
     const { userId } = req.body; 
 
@@ -24,4 +28,4 @@ const getUserConversations = async (req, res) => {
     }
 };
 
-module.exports = { handleUserInput, getUserConversations };
+module.exports = { handleUserInput, getUserConversations,pong };
