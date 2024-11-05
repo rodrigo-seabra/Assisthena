@@ -191,7 +191,7 @@ const processInput = async (text) => {
 
     if (!response.intent || response.score < 0.5) {
         return {
-            answer: "Desculpe, não consegui entender sua pergunta. Poderia reformulá-la ou tentar algo mais específico?",
+            answer: "Sou um protótipo em treinamento e não estou preparado para responder esse tipo de pergunta!",
             intent: "undefined"
         };
     }
