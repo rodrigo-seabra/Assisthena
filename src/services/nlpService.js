@@ -64,12 +64,21 @@ const documents = [
     { text: "como motivar os alunos do 7º ano?", intent: "response_for_7ano_motivation" },
 
     // 8º Ano
-    { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o 8ano", intent: "response_for_8_class_professor" },
-    { text: "quais habilidades os alunos devem desenvolver no 8º ano?", intent: "response_for_8ano_skills" },
+    { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o Turma 8A", intent: "response_for_8_class_professor" },
+    { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o Turma 8B", intent: "response_for_8_class_professor" },
+
+    { text: "quais são os tópicos mais importantes para o Turma 8B", intent: "response_for_8ano_skills" },
+    { text: "quais são os tópicos mais importantes para o Turma 8A", intent: "response_for_8ano_skills" },
+
     { text: "como abordar temas complexos com os alunos do 8º ano?", intent: "response_for_8ano_complex_themes" },
 
     // 9º Ano
-    { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o 9ano", intent: "response_for_9_class_professor" },
+    { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o Turma 9A", intent: "response_for_9_class_professor" },
+    { text: "o professor está pedindo mais detalhes e feedbacks e insights sobre o Turma 9B", intent: "response_for_9_class_professor" },
+
+    { text: "quais são os tópicos mais importantes para o Turma 9B", intent: "response_for_9_class_professor"},
+    { text: "quais são os tópicos mais importantes para o Turma 9A", intent: "response_for_9_class_professor" },
+
     { text: "quais são os principais tópicos para o 9º ano?", intent: "response_for_9ano_topics" },
     { text: "como preparar os alunos do 9º ano para o ensino médio?", intent: "response_for_9ano_preparation" },
 
@@ -189,7 +198,7 @@ const trainNLP = async () => {
 const processInput = async (text) => {
     const response = await manager.process('pt', text);
 
-    if (!response.intent || response.score < 0.5) {
+    if (!response.intent) {
         return {
             answer: "Sou um protótipo em treinamento e não estou preparado para responder esse tipo de pergunta!",
             intent: "undefined"
