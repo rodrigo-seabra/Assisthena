@@ -9,8 +9,14 @@ const manager = new NlpManager({ languages: ['pt'], forceNER: true });
 const documents = [
 
     // Professores
-    { text: "como melhorar o engajamento dos alunos?", intent: "improve_student_engagement" },
+    { text: "Estou precisando de uma visão de fora para ampliar o engajamento das aulas.", intent: "improve_student_engagement" },
+        { text: "Como melhorar o engajamento dos alunos?", intent: "improve_student_engagement" },
+
     { text: "quais são as melhores práticas para aulas interativas?", intent: "best_practices_interactive_classes" },
+    { text: "Consegue me ajudar a aumentar a interatividade das aulas?", intent: "best_practices_interactive_classes" },
+    { text: "Consegue me ajudar a aumentar a interatividade das aulas na sala", intent: "best_practices_interactive_classes" },
+
+
     { text: "como lidar com alunos desmotivados?", intent: "handling_unmotivated_students" },
     { text: "como adaptar o conteúdo para alunos com dificuldades?", intent: "adapt_content_for_struggling_students" },
     { text: "qual é a melhor abordagem para aulas híbridas?", intent: "best_approach_hybrid_classes" },
@@ -131,18 +137,18 @@ const documents = [
     { text: "como melhorar a comunicação entre alunos e professores?", intent: "improving_communication" },
     { text: "quais são as melhores práticas para uma boa convivência escolar?", intent: "good_school_living_practices" },
 
-    { "text": "quais são as fórmulas de física", "intent": "formulas_fisica" },
-    { "text": "quais são as fórmulas de matemática", "intent": "formulas_matematica" },
-    { "text": "quais são as fórmulas de química", "intent": "formulas_quimica" },
-    { "text": "explique a lei de Newton", "intent": "lei_newton" },
-    { "text": "o que é a equação de segundo grau", "intent": "equacao_segundo_grau" },
-    { "text": "o que é um elemento químico", "intent": "elemento_quimico" },
+    { text: "quais são as fórmulas de física", intent: "formulas_fisica" },
+    { text: "quais são as fórmulas de matemática", intent: "formulas_matematica" },
+    { text: "quais são as fórmulas de química", intent: "formulas_quimica" },
+    { text: "explique a lei de Newton", intent: "lei_newton" },
+    { text: "o que é a equação de segundo grau", intent: "equacao_segundo_grau" },
+    { text: "o que é um elemento químico", intent: "elemento_quimico" },
 
-    { "text": "como planejar meu futuro", "intent": "planejamento_futuro" },
-    { "text": "como melhorar minha produtividade", "intent": "melhorar_produtividade" },
-    { "text": "quais são as melhores técnicas de estudo", "intent": "tecnicas_estudo" },
-    { "text": "como posso melhorar minhas notas", "intent": "melhorar_notas" },
-    { "text": "como fazer um cronograma de estudos", "intent": "cronograma_estudos" },
+    { text: "como planejar meu futuro", intent: "planejamento_futuro" },
+    { text: "como melhorar minha produtividade", intent: "melhorar_produtividade" },
+    { text: "quais são as melhores técnicas de estudo", intent: "tecnicas_estudo" },
+    { text: "como posso melhorar minhas notas", intent: "melhorar_notas" },
+    { text: "como fazer um cronograma de estudos", intent: "cronograma_estudos" },
 
 
     { text: "como planejar meu futuro", intent: "planejamento_futuro" },
